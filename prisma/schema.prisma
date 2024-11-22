@@ -23,7 +23,8 @@ model SleepSession {
   user      User      @relation(fields: [userId], references: [id])
   wentToBedAt DateTime
   wokeUpAt   DateTime
-  notes     String?
+  sleepRate Int
+  note     String?
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 }
