@@ -6,10 +6,25 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
 model User {
-  id        String      @id @default(uuid())
-  kindeId   String   @unique
-  email     String   @unique
-  firstName String
-  lastName  String
+  id            String         @id @default(uuid())
+  kindeId       String         @unique
+  email         String         @unique
+  firstName     String
+  lastName      String
+  sleepSessions SleepSession[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model SleepSession {
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
+  wentToBedAt DateTime
+  wokeUpAt   DateTime
+  notes     String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
