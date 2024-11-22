@@ -1,4 +1,5 @@
-import { Navbar } from "@/components/navbar";
+import { AppSidebar } from "@/components/app-sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -13,8 +14,13 @@ export default function DashboardLayout({
 }>) {
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-      <main className="mx-auto px-4 py-8">{children}</main>
+      <SidebarProvider>
+        <AppSidebar />
+        <main className="flex flex-1 flex-col gap-4 p-4 pt-4 w-full h-screen">
+          <SidebarTrigger />
+          {children}
+        </main>
+      </SidebarProvider>
     </div>
   );
 }
