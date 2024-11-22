@@ -1,9 +1,12 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { calculateAvgSleepDuration } from "@/lib/sleep-card-fn";
+import { SleepSession } from "@prisma/client";
 import { Bed, Clock, TrendingUp, Moon } from "lucide-react";
 
-export function SleepCards() {
+export function SleepCards({ sessions }: { sessions: SleepSession[] }) {
+  const avg = calculateAvgSleepDuration(sessions, 7);
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
       <Card>
@@ -12,8 +15,8 @@ export function SleepCards() {
           <Clock className="h-4 w-4 text-muted-foreground" />
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">7.5h</div>
-          <p className="text-xs text-muted-foreground">+0.2h from last week</p>
+          <div className="text-2xl font-bold">{avg.average}h</div>
+          <p className="text-xs text-muted-foreground">{avg.difference}</p>
         </CardContent>
       </Card>
       <Card>
