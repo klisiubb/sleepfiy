@@ -9,6 +9,9 @@ import React from "react";
 export default async function Page() {
   const { getUser } = getKindeServerSession();
   const user = await getUser();
+  if (!user) {
+    return <h1>Loading...</h1>;
+  }
   const sessions = await prisma.sleepSession.findMany({
     where: {
       userId: user.id,

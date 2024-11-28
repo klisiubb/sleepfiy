@@ -1,10 +1,9 @@
 "use client";
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import { Home, Settings } from "lucide-react";
 
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,

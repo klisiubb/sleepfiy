@@ -50,7 +50,7 @@ const AddSessionDialog = () => {
   async function onSubmit(values: z.infer<typeof sleepFormSchema>) {
     const data = await CreateSleepSession({
       ...values,
-      userId: user!!.id,
+      userId: user!.id,
       note: values.note ?? null,
     });
     if (data.status === 400) {
