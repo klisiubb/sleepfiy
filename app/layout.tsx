@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/providers/theme";
 import { Toaster } from "@/components/ui/sonner";
+import Script from "next/script";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -27,6 +28,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <Script
+        async
+        src="https://umami.klisiu.me/script.js"
+        data-website-id="ec526690-56c2-44a3-907c-775537487018"
+      />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
